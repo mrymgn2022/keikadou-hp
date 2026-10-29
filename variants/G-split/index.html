@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>けいか堂飲料店 サイト案G 4分割</title>
+<meta name="description" content="別案G：4分割スプリット型。最初の画面で四つの店を縦のパネルに並べ、触れると広がる。モノクロで余白の多いモダンな構成。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* 案G：4分割スプリット。白黒＋細い罫線、琥珀はホバー時だけ。欧文の大きな数字 */
+  :root {
+    --bg: #f7f6f3; --fg: #141414; --muted: #7a7872; --line: #cfccc4; --amber: #d1842b; --panel: #0e0e0e;
+    --en: "Inter", "Noto Sans JP", sans-serif; --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; border-radius: 0 !important; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-weight: 300; font-size: 14px; line-height: 1.9; letter-spacing: .04em; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { margin: 0; font-weight: 400; line-height: 1.3; }
+  .en { font-family: var(--en); letter-spacing: .14em; text-transform: uppercase; font-size: 11px; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+  /* ヘッダー：細線だけ */
+  .hd { position: fixed; inset: env(safe-area-inset-top, 0px) 0 auto; z-index: 30; mix-blend-mode: difference; color: #fff; }
+  .hd .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .hd .logo { display: flex; align-items: center; gap: 10px; }
+  .hd .logo img { width: 30px; height: 30px; }
+  .hd nav { display: flex; gap: 24px; }
+  .hd nav a { opacity: .75; } .hd nav a:hover { opacity: 1; }
+
+  /* 4分割パネル */
+  .split { display: flex; height: 100svh; min-height: 560px; background: var(--panel); }
+  .pane { position: relative; flex: 1; overflow: hidden; color: #fff; transition: flex .7s cubic-bezier(.2,.7,.2,1); border-left: 1px solid rgba(255,255,255,.18); }
+  .pane:first-child { border-left: 0; }
+  .pane img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) brightness(.55); transition: filter .7s, transform 1.4s; transform: scale(1.03); }
+  .pane:hover, .pane:focus-within { flex: 2.4; }
+  .pane:hover img, .pane:focus-within img { filter: grayscale(0) brightness(.75); transform: scale(1); }
+  .pane .n { position: absolute; left: 22px; top: 84px; font-family: var(--en); font-weight: 300; font-size: 44px; line-height: 1; opacity: .9; }
+  .pane .tx { position: absolute; left: 22px; right: 22px; bottom: 32px; }
+  .pane h2 { font-size: 20px; letter-spacing: .12em; font-weight: 400; }
+  .pane h2 small { display: block; font-family: var(--en); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; opacity: .75; margin-top: 6px; }
+  .pane p { margin: 12px 0 0; max-width: 360px; font-size: 13px; color: #ddd; opacity: 0; transform: translateY(8px); transition: opacity .5s .15s, transform .5s .15s; }
+  .pane:hover p, .pane:focus-within p { opacity: 1; transform: none; }
+  .pane .go { display: inline-block; margin-top: 14px; border-bottom: 1px solid var(--amber); color: var(--amber); padding-bottom: 2px; opacity: 0; transition: opacity .5s .25s; }
+  .pane:hover .go, .pane:focus-within .go { opacity: 1; }
+  .pane .tate { position: absolute; right: 18px; top: 84px; writing-mode: vertical-rl; font-family: var(--en); font-size: 10px; letter-spacing: .3em; opacity: .55; }
+
+  /* 細い帯：営業時間 */
+  .bar { border-bottom: 1px solid var(--line); }
+  .bar .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .bar div { padding: 18px 16px 18px 0; border-left: 1px solid var(--line); padding-left: 16px; }
+  .bar div:first-child { border-left: 0; padding-left: 0; }
+  .bar b { display: block; font-weight: 500; font-size: 13px; letter-spacing: .08em; }
+  .bar span { font-family: var(--en); font-size: 12px; color: var(--muted); letter-spacing: .06em; }
+
+  section { padding: 96px 0; }
+  .ttl { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: baseline; margin-bottom: 44px; }
+  .ttl h2 { font-size: 26px; letter-spacing: .12em; font-weight: 300; }
+
+  /* ステートメント */
+  .state { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 24px; }
+  .state h2 { font-size: clamp(24px, 2.8vw, 36px); line-height: 1.6; letter-spacing: .1em; font-weight: 300; grid-column: 2 / 4; }
+  .state p { color: #444; margin: 0; }
+  .state .ph { grid-column: 2 / 4; margin-top: 44px; border-top: 1px solid var(--line); padding-top: 24px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .state .ph img { aspect-ratio: 1; object-fit: cover; filter: grayscale(.2); }
+
+  /* インデックス表：全店の情報を一覧 */
+  .index { border-top: 1px solid var(--fg); }
+  .row { display: grid; grid-template-columns: 60px 1.4fr 1fr 1fr .8fr .6fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: center; transition: background .2s; }
+  .row:hover { background: #fff; }
+  .row .n { font-family: var(--en); font-weight: 300; font-size: 24px; color: var(--muted); }
+  .row h3 { font-size: 16px; font-weight: 400; letter-spacing: .08em; }
+  .row h3 small { display: block; font-family: var(--en); font-size: 10px; color: var(--muted); letter-spacing: .2em; text-transform: uppercase; margin-top: 2px; }
+  .row span { font-size: 13px; color: #444; }
+  .row .tel { font-family: var(--en); letter-spacing: .05em; }
+  .row .go { text-align: right; } .row .go a { border-bottom: 1px solid var(--fg); padding-bottom: 2px; } .row .go a:hover { color: var(--amber); border-color: var(--amber); }
+  .hrow { font-family: var(--en); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); padding: 10px 0; border-bottom: 1px solid var(--fg); }
+
+  /* ジャーナル */
+  .journal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .journal a { display: block; }
+  .journal img { aspect-ratio: 4/3; object-fit: cover; width: 100%; filter: grayscale(.35); transition: filter .4s; }
+  .journal a:hover img { filter: grayscale(0); }
+  .journal time { display: block; font-family: var(--en); font-size: 11px; color: var(--muted); margin-top: 14px; letter-spacing: .1em; }
+  .journal h3 { font-size: 15px; font-weight: 400; margin-top: 4px; letter-spacing: .06em; }
+
+  /* 連絡先・地図 */
+  .contact { background: var(--panel); color: #e6e3dc; }
+  .contact .wrap { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 24px; }
+  .contact h2 { font-size: 26px; letter-spacing: .12em; font-weight: 300; color: #fff; }
+  .contact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 24px; font-size: 13px; }
+  .contact dt { font-family: var(--en); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #9a968e; padding-top: 4px; }
+  .contact dd { margin: 0; }
+  .contact .map { border: 1px solid #333; }
+  footer { padding: 24px 0; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: var(--muted); }
+
+  @media (max-width: 1000px) {
+    .hd nav { display: none; }
+    .split { flex-direction: column; height: auto; min-height: 0; }
+    .pane { flex: none; height: 46vw; min-height: 200px; border-left: 0; border-top: 1px solid rgba(255,255,255,.18); }
+    .pane:hover, .pane:focus-within { flex: none; }
+    .pane img { filter: grayscale(.3) brightness(.65); }
+    .pane p, .pane .go { opacity: 1; transform: none; }
+    .pane .n { top: 20px; font-size: 32px; } .pane .tate { top: 20px; }
+    .pane .tx { bottom: 20px; }
+    .bar .wrap { grid-template-columns: 1fr 1fr; } .bar div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .ttl, .state, .contact .wrap { grid-template-columns: 1fr; }
+    .state h2, .state .ph { grid-column: auto; }
+    .row { grid-template-columns: 40px 1fr; gap: 6px 14px; }
+    .row span, .row .go { grid-column: 2; } .row .go { text-align: left; }
+    .hrow { display: none; }
+    .journal { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+  }
+  @media (max-width: 560px) { .pane { height: 64vw; } .state .ph { grid-template-columns: 1fr 1fr; } .bar .wrap { grid-template-columns: 1fr; } .bar div { border-left: 0; padding-left: 0; padding: 10px 0; } }
+  @media (prefers-reduced-motion: reduce) { .pane, .pane img, .pane p { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="hd"><div class="wrap">
+  <a class="logo en" href="#top"><img src="images/logo.jpg" alt="角ヤ ロゴ">Keikadou</a>
+  <nav class="en"><a href="#index">Index</a><a href="#about">About</a><a href="#journal">Journal</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<div class="split" id="top">
+  <a class="pane" href="bar-kadoya.html"><img src="images/kadoya-counter.jpg" alt="バーカドヤ"><span class="n">01</span><span class="tate">Bar</span><div class="tx"><h2>バーカドヤ<small>Bar Kadoya</small></h2><p>角地のバー。銅マグの角ハイボールと酒場飯。18:00〜翌4:00。</p><span class="go en">View →</span></div></a>
+  <a class="pane" href="#index"><img src="images/kuri-interior-wide.jpg" alt="くりはら屋"><span class="n">02</span><span class="tate">Miyagi</span><div class="tx"><h2>くりはら屋<small>Kuriharaya</small></h2><p>宮城北部の酒と肴。草鍋、焼鳥、栗原の米と地酒。18:00〜翌4:00。</p><span class="go en">View →</span></div></a>
+  <a class="pane" href="#index"><img src="images/tenjin-interior.jpg" alt="蕎麦酒場 角ヤ 湯島天神"><span class="n">03</span><span class="tate">Soba</span><div class="tx"><h2>角ヤ 湯島天神<small>Soba Sakaba Kadoya</small></h2><p>つまみと酒、〆は蕎麦。18:00〜翌3:00、金曜は翌4:00。</p><span class="go en">View →</span></div></a>
+  <a class="pane" href="#index"><img src="images/kasuga-terrace.jpg" alt="蕎麦酒場 角ヤ 春日テラス"><span class="n">04</span><span class="tate">Terrace</span><div class="tx"><h2>角ヤ 春日テラス<small>Kasuga Terrace</small></h2><p>湯島駅前、テラス席の蕎麦酒場。貸切相談可。18:00〜翌4:00。</p><span class="go en">View →</span></div></a>
+</div>
+
+<div class="bar"><div class="wrap">
+  <div><b>全店 18:00 開店</b><span>Open from 6 pm · closed on Sundays</span></div>
+  <div><b>文京区湯島3丁目</b><span>Yushima sta. 1–3 min walk</span></div>
+  <div><b>角ハイボール ¥500</b><span>Kaku highball at every bar</span></div>
+  <div><b>株式会社けいか堂飲料店</b><span>Keikadou Co., Ltd.</span></div>
+</div></div>
+
+<section id="about"><div class="wrap state">
+  <div class="en">About</div>
+  <h2>一杯を最高の状態で。<br>素材は顔の見える人から。<br>灯りは朝まで消さない。</h2>
+  <p>私たちは湯島天神下で四つの酒場を営む小さな会社です。角地のバーから始まり、宮城の肴の店、二軒の蕎麦酒場へ。店が増えても、やることは三つだけ。</p>
+  <p>冷凍庫で冷やした銅マグで出す角ハイボール。宮城県北部・栗原の農家から直送される米と野菜。夕方六時から朝四時まで。それだけを、毎晩。</p>
+  <div class="ph"><img src="images/kadoya-mug.jpg" alt="銅マグハイボール"><img src="images/kuri-rice-greens.jpg" alt="栗原の米と青菜"><img src="images/tenjin-sign-night.jpg" alt="角ヤ 湯島天神の看板"></div>
+</div></section>
+
+<section id="index" style="padding-top:0"><div class="wrap">
+  <div class="ttl"><div class="en">Index</div><h2>四店舗の一覧</h2></div>
+  <div class="index">
+    <div class="row hrow" style="padding:10px 0"><span>No.</span><span>Shop</span><span>Address</span><span>Hours</span><span>Tel</span><span></span></div>
+    <div class="row"><span class="n">01</span><h3>バーカドヤ<small>Bar</small></h3><span>湯島3-45-3 小林ビル1F</span><span>18:00〜翌4:00（L.O.3:00）</span><span class="tel">03-3831-4775</span><span class="go"><a href="bar-kadoya.html">View</a></span></div>
+    <div class="row"><span class="n">02</span><h3>宮城北部の酒と肴 くりはら屋<small>Miyagi</small></h3><span>湯島3-46-9 スギヤマビル1F・2F</span><span>18:00〜翌4:00</span><span class="tel">03-3831-5256</span><span class="go"><a href="#contact">Info</a></span></div>
+    <div class="row"><span class="n">03</span><h3>蕎麦酒場 角ヤ 湯島天神<small>Soba</small></h3><span>湯島3-36-8</span><span>18:00〜翌3:00（金 翌4:00）</span><span class="tel">03-3831-8018</span><span class="go"><a href="#contact">Info</a></span></div>
+    <div class="row"><span class="n">04</span><h3>蕎麦酒場 角ヤ 春日テラス<small>Soba · Terrace</small></h3><span>湯島3-46-1 1F</span><span>18:00〜翌4:00</span><span class="tel">03-3834-4270</span><span class="go"><a href="#contact">Info</a></span></div>
+  </div>
+  <p style="color:var(--muted);font-size:12px;margin-top:14px">全店 日曜定休。東京メトロ千代田線 湯島駅 3番・5番出口より徒歩1〜3分。</p>
+</div></section>
+
+<section id="journal" style="padding-top:0"><div class="wrap">
+  <div class="ttl"><div class="en">Journal</div><h2>最近のこと</h2></div>
+  <div class="journal">
+    <a href="#"><img src="images/kuri-greens-pork.jpg" alt=""><time>2026.09.06</time><h3>秋の宮城野菜が届きました。草鍋の季節です。</h3></a>
+    <a href="#"><img src="images/tenjin-tantan.jpg" alt=""><time>2026.10.01</time><h3>角ヤ 湯島天神、金曜日は翌4時まで。</h3></a>
+    <a href="#"><img src="images/kasuga-noren.jpg" alt=""><time>2026.08.02</time><h3>春日テラスで「酒場いけのや」の間借り営業。</h3></a>
+  </div>
+  <p style="color:var(--muted);font-size:12px;margin-top:14px">※記事はレイアウト確認用の例です。</p>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div class="en" style="color:#9a968e">Contact</div>
+  <div><h2>株式会社けいか堂飲料店</h2>
+    <dl style="margin-top:24px"><dt>Address</dt><dd>〒113-0034 東京都文京区湯島3-45-3</dd><dt>Business</dt><dd>飲食店の経営（バー・居酒屋・蕎麦酒場）</dd><dt>Tel</dt><dd>03-3831-4775（バーカドヤ）</dd><dt>Access</dt><dd>東京メトロ千代田線 湯島駅より徒歩1〜3分</dd></dl>
+  </div>
+  <div class="map"><img src="images/map-pins.jpg" alt="4店舗の位置図"></div>
+</div></section>
+<div class="wrap extlinks" style="padding-top:28px;padding-bottom:28px;font-size:12px;letter-spacing:.08em;line-height:2.2"><span style="opacity:.7">食べログ：</span><a href="https://tabelog.com/tokyo/A1311/A131101/13039186/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">バーカドヤ</a> ／ <a href="https://tabelog.com/tokyo/A1311/A131101/13266473/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">くりはら屋</a> ／ <a href="https://tabelog.com/tokyo/A1311/A131101/13219181/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">角ヤ 湯島天神</a> ／ <a href="https://tabelog.com/tokyo/A1311/A131101/13219095/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">角ヤ 春日テラス</a><br><span style="opacity:.7">Instagram：</span><a href="https://www.instagram.com/kuriharaya_official/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">@kuriharaya_official</a> ／ <a href="https://www.instagram.com/kadoya_tenjin/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">@kadoya_tenjin</a> ／ <a href="https://www.instagram.com/kadoya_terasu/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">@kadoya_terasu</a></div>
+
+<footer><div class="wrap en"><span>© Keikadou Co., Ltd.</span><span>案G：4分割スプリット型</span></div></footer>
+
+</body>
+</html>

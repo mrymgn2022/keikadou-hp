@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>角ヤ 品書き｜バーカドヤ｜サイト案C</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#f4efe4; --sumi:#1f1d1a; --sumi-2:#4a463f; --muted:#7d776c; --line:#cfc6b2; --shu:#b23a2a; --gold:#9c7b2f;
+    --mincho:"Shippori Mincho B1","Noto Serif JP",serif; --gothic:"Zen Kaku Gothic New","Noto Sans JP",sans-serif; color-scheme: light; }
+  * { box-sizing:border-box; border-radius:0 !important; }
+  body { margin:0; background:var(--paper); background-image:radial-gradient(rgba(0,0,0,.025) 1px, transparent 1px); background-size:6px 6px; color:var(--sumi); font-family:var(--mincho); font-size:15px; line-height:2.1; letter-spacing:.08em; }
+  img { max-width:100%; height:auto; display:block; } a { color:inherit; text-decoration:none; }
+  h1,h2,h3 { margin:0; font-weight:500; line-height:1.5; }
+  .wrap { max-width:1120px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); }
+  .tate { writing-mode:vertical-rl; text-orientation:mixed; }
+  .seal { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; background:var(--shu); color:#fff; font-size:20px; font-weight:700; box-shadow:inset 0 0 0 2px var(--shu), inset 0 0 0 3px #fff; }
+  .btn { display:inline-block; border:1px solid var(--sumi); padding:8px 22px; font-size:13px; letter-spacing:.25em; } .btn:hover { background:var(--sumi); color:var(--paper); }
+  .hd { border-bottom:1px solid var(--sumi); } .hd .wrap { display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .hd .logo { display:flex; align-items:center; gap:14px; } .hd .logo img { width:44px; height:44px; border:1px solid var(--line); }
+  .hd .logo strong { font-size:16px; letter-spacing:.25em; font-weight:500; } .hd nav { display:flex; gap:26px; font-size:13px; letter-spacing:.2em; } .hd nav a:hover { color:var(--shu); }
+  .top { display:grid; grid-template-columns:90px 1fr 1.1fr; gap:32px; padding:56px 0; border-bottom:1px solid var(--line); }
+  .top h1 { font-size:clamp(30px,3.6vw,44px); letter-spacing:.3em; font-weight:700; height:100%; }
+  .top h1 small { display:block; font-size:13px; letter-spacing:.4em; color:var(--shu); margin-left:12px; font-weight:500; }
+  .top .tx { align-self:center; } .top .tx p { max-width:420px; }
+  .top .tx .en { font-family:var(--gothic); font-size:11px; letter-spacing:.35em; color:var(--muted); margin-bottom:12px; }
+  .top .ph { border:1px solid var(--sumi); padding:8px; background:#fff; position:relative; } .top .ph img { width:100%; height:100%; min-height:380px; object-fit:cover; }
+  .top .ph .seal { position:absolute; right:22px; bottom:22px; }
+  .shina { padding:72px 0; }
+  .sec-ttl { display:flex; align-items:baseline; gap:16px; margin-bottom:36px; } .sec-ttl h2 { font-size:26px; letter-spacing:.3em; font-weight:700; }
+  .sec-ttl small { font-family:var(--gothic); font-size:11px; letter-spacing:.3em; color:var(--muted); } .sec-ttl::after { content:""; flex:1; height:1px; background:var(--line); }
+  .board { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+  .board h3 { font-size:18px; letter-spacing:.4em; border-bottom:1px solid var(--sumi); padding-bottom:6px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:baseline; }
+  .board h3 small { font-family:var(--gothic); font-size:10px; letter-spacing:.3em; color:var(--muted); }
+  .board ul { list-style:none; margin:0; padding:0; }
+  .board li { display:flex; align-items:baseline; gap:8px; padding:9px 0; border-bottom:1px dotted var(--line); font-size:15px; }
+  .board li .dots { flex:1; border-bottom:1px dotted var(--line); transform:translateY(-6px); }
+  .board li .pr { font-family:var(--gothic); letter-spacing:.05em; white-space:nowrap; }
+  .board li small { font-family:var(--gothic); font-size:11px; color:var(--muted); margin-left:6px; }
+  .mei { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+  .mei figure { margin:0; border:1px solid var(--sumi); padding:6px; background:#fff; } .mei img { aspect-ratio:4/3; object-fit:cover; width:100%; }
+  .mei figcaption { padding:10px 4px 4px; font-size:14px; letter-spacing:.2em; }
+  .info { background:var(--sumi); color:var(--paper); padding:64px 0; }
+  .info .wrap { display:grid; grid-template-columns:90px 1fr 1fr; gap:32px; }
+  .info .tate { font-size:28px; letter-spacing:.3em; font-weight:700; }
+  .info dl { margin:0; display:grid; grid-template-columns:110px 1fr; gap:8px 16px; font-size:14px; } .info dt { color:var(--gold); letter-spacing:.2em; } .info dd { margin:0; }
+  .info .map { border:1px solid #555; padding:6px; background:#2a2824; }
+  footer { padding:36px 0; font-family:var(--gothic); font-size:11px; letter-spacing:.2em; color:var(--muted); display:flex; justify-content:space-between; }
+  @media (max-width:900px) { .hd nav{display:none} .top{grid-template-columns:100px 1fr;gap:20px} .top h1{font-size:30px} .top .ph{grid-column:1/-1} .top .ph img{min-height:240px} .board,.mei{grid-template-columns:1fr} .info .wrap{grid-template-columns:1fr} .info .tate{writing-mode:horizontal-tb} }
+</style>
+</head>
+<body>
+<header class="hd"><div class="wrap"><a class="logo" href="index.html"><img src="images/logo.jpg" alt="角ヤ 印"><strong>けいか堂飲料店</strong></a><nav><a href="index.html#shops">店</a><a href="index.html#kod">こだわり</a><a href="index.html#osr">お知らせ</a><a href="index.html#acc">道順</a></nav></div></header>
+
+<div class="wrap"><div class="top">
+  <h1 class="tate">バーカドヤ<small>角地の酒場</small></h1>
+  <div class="tx"><div class="en">BAR KADOYA · SINCE THE CORNER OF YUSHIMA</div><p>角地にひっそりと佇む、照明の落ち着いた懐かしいバー。店内にも“角”を意識した設えを施しております。初めてでも、どこかで来たことがあるような、ほっとする店。</p><p style="font-family:var(--gothic);font-size:13px;color:var(--sumi-2)">営業 十八時〜翌四時（ラストオーダー三時）／日曜定休／電話 03-3831-4775</p></div>
+  <div class="ph"><img src="images/kadoya-counter.jpg" alt="バーカドヤのカウンター"><span class="seal">角</span></div>
+</div></div>
+
+<section class="shina"><div class="wrap">
+  <div class="sec-ttl"><h2>品書き</h2><small>MENU · 税込</small></div>
+  <div class="board">
+    <div><h3>酒<small>DRINK</small></h3><ul>
+      <li>角ハイボール<small>銅マグ</small><span class="dots"></span><span class="pr">五〇〇円</span></li>
+      <li>赤玉ハイボール<span class="dots"></span><span class="pr">五〇〇円</span></li>
+      <li>赤玉 オレンジ・グレープフルーツ・ピーチ<span class="dots"></span><span class="pr">各五〇〇円</span></li>
+      <li>白玉ハイボール<span class="dots"></span><span class="pr">五〇〇円</span></li>
+      <li>白玉 オレンジ・グレープフルーツ・ピーチ・クランベリー<span class="dots"></span><span class="pr">各五〇〇円</span></li>
+      <li>生ビール プレミアム・モルツ<span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>本日のワイン グラス／ボトル<span class="dots"></span><span class="pr">八〇〇円〜／六〇〇〇円〜</span></li>
+      <li>本格焼酎 各種<span class="dots"></span><span class="pr">五〇〇円</span></li>
+      <li>カクテル ロング／ショート<span class="dots"></span><span class="pr">七〇〇円〜／一二〇〇円〜</span></li>
+      <li>トニッ角<span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>角瓶 ボトルキープ<small>ポケット／ボトル</small><span class="dots"></span><span class="pr">二〇〇〇円／四〇〇〇円</span></li>
+    </ul></div>
+    <div><h3>肴<small>FOOD</small></h3><ul>
+      <li>カドヤの煮込<small>パン添え</small><span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>たえこさんの漬物<span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>チーズの醤油漬<span class="dots"></span><span class="pr">五〇〇円</span></li>
+      <li>皿焼きオムレツ<small>チーズ・たらこ・アンチョビ・ベーコン</small><span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>とうもろこしバター醤油<span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>厚切りベーコン網焼<span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>アンチョビポテト<span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>小さいピザ 各種<span class="dots"></span><span class="pr">七〇〇円</span></li>
+      <li>昭和のナポリタン<span class="dots"></span><span class="pr">九〇〇円</span></li>
+      <li>そうめん<span class="dots"></span><span class="pr">七〇〇円</span></li>
+    </ul></div>
+  </div>
+  <div class="mei">
+    <figure><img src="images/kadoya-mug.jpg" alt="銅マグハイボール"><figcaption>銅マグハイボール</figcaption></figure>
+    <figure><img src="images/kadoya-nikomi.jpg" alt="カドヤの煮込"><figcaption>カドヤの煮込</figcaption></figure>
+    <figure><img src="images/kadoya-napolitan.jpg" alt="昭和のナポリタン"><figcaption>昭和のナポリタン</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="info"><div class="wrap">
+  <div class="tate">店の案内</div>
+  <dl><dt>店名</dt><dd>バーカドヤ（KADOYA 角ヤ）</dd><dt>所在</dt><dd>東京都文京区湯島三丁目四十五番三号 小林ビル一階</dd><dt>電話</dt><dd>03-3831-4775</dd><dt>営業</dt><dd>十八時〜翌四時（ラストオーダー三時）</dd><dt>定休</dt><dd>日曜日</dd><dt>お支払</dt><dd>現金・各種クレジットカード</dd><dt>道順</dt><dd>東京メトロ千代田線 湯島駅より徒歩二分</dd></dl>
+  <div class="map"><img src="images/map-pins.jpg" alt="地図"></div>
+</div></section>
+<div class="wrap extlinks" style="padding-top:8px;padding-bottom:36px;font-size:12px;letter-spacing:.08em;line-height:2.2"><span style="opacity:.7">外部リンク：</span><a href="https://tabelog.com/tokyo/A1311/A131101/13039186/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">食べログ（バーカドヤ）</a> ／ <a href="https://www.instagram.com/kadoya_tenjin/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Instagram（角ヤ 湯島天神）</a> ／ <a href="https://www.instagram.com/kuriharaya_official/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Instagram（くりはら屋）</a></div>
+
+<div class="wrap"><footer><span>© KEIKADOU CO., LTD.</span><a href="index.html">表紙に戻る</a><span>案C：和・縦書きの老舗型</span></footer></div>
+</body>
+</html>

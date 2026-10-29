@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>けいか堂飲料店 サイト案B 湯島夜話</title>
+<meta name="description" content="別案B：雑誌風エディトリアル型。大きな文字と全幅写真で、店と人の物語を読ませる構成。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* 案B：雑誌風。クリーム地に炭色の文字、芥子色の差し色。章立て（01/02/03）と大見出しで読ませる */
+  :root {
+    --bg: #f3efe6; --bg-2: #e9e3d6; --fg: #23211d; --muted: #6f6a60; --line: #d6cfbf;
+    --accent: #c98a1b; --ink: #1b1a17;
+    --mincho: "Zen Old Mincho", "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    --gothic: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+    --disp: "Playfair Display", "Zen Old Mincho", serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; border-radius: 0 !important; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--gothic); font-size: 15px; line-height: 2; letter-spacing: .04em; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { margin: 0; font-family: var(--mincho); font-weight: 600; line-height: 1.4; text-wrap: balance; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .narrow { max-width: 720px; margin: 0 auto; }
+  .num { font-family: var(--disp); font-size: 72px; line-height: 1; color: var(--accent); font-weight: 400; }
+  .kicker { font-size: 12px; letter-spacing: .4em; text-transform: uppercase; color: var(--muted); }
+  .btn { display: inline-block; border-bottom: 1px solid var(--fg); padding: 2px 0; font-size: 13px; letter-spacing: .2em; }
+  .btn::after { content: "  →"; }
+  .btn:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* masthead */
+  .mast { border-bottom: 1px solid var(--fg); }
+  .mast .wrap { display: flex; align-items: flex-end; justify-content: space-between; padding-top: 18px; padding-bottom: 12px; gap: 16px; }
+  .mast .title { font-family: var(--mincho); font-weight: 900; font-size: 28px; letter-spacing: .2em; line-height: 1; }
+  .mast .title small { display: block; font-family: var(--disp); font-weight: 400; font-size: 12px; letter-spacing: .3em; color: var(--muted); margin-top: 6px; }
+  .mast .meta { font-size: 11px; letter-spacing: .2em; color: var(--muted); text-align: right; }
+  .mast nav { display: flex; gap: 22px; font-size: 12px; letter-spacing: .2em; padding: 10px 0; border-top: 1px solid var(--line); }
+  .mast nav a:hover { color: var(--accent); }
+
+  /* cover */
+  .cover { display: grid; grid-template-columns: 5fr 7fr; gap: 0; border-bottom: 1px solid var(--fg); }
+  .cover .tx { padding: 64px 48px 48px 0; display: flex; flex-direction: column; justify-content: space-between; }
+  .cover h1 { font-size: clamp(36px, 5.2vw, 68px); font-weight: 900; letter-spacing: .08em; line-height: 1.3; }
+  .cover h1 em { font-style: normal; color: var(--accent); }
+  .cover .lead { font-size: 15px; color: #444; max-width: 420px; margin-top: 24px; }
+  .cover .ph { position: relative; }
+  .cover .ph img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; }
+  .cover .cap { position: absolute; left: 0; bottom: 0; background: var(--ink); color: #eee; font-size: 11px; letter-spacing: .2em; padding: 6px 14px; }
+  .toc { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--fg); }
+  .toc a { padding: 22px 24px 22px 0; border-right: 1px solid var(--line); display: flex; gap: 14px; align-items: baseline; }
+  .toc a:last-child { border-right: 0; }
+  .toc a + a { padding-left: 24px; }
+  .toc .n { font-family: var(--disp); font-size: 22px; color: var(--accent); }
+  .toc b { font-family: var(--mincho); font-weight: 600; font-size: 17px; display: block; letter-spacing: .1em; }
+  .toc small { color: var(--muted); font-size: 12px; letter-spacing: .1em; }
+  .toc a:hover b { color: var(--accent); }
+
+  /* chapter */
+  .chap { padding: 96px 0; border-bottom: 1px solid var(--line); }
+  .chap-head { display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: start; margin-bottom: 40px; }
+  .chap h2 { font-size: clamp(28px, 3.4vw, 44px); letter-spacing: .1em; }
+  .chap h2 small { display: block; font-family: var(--disp); font-weight: 400; font-size: 14px; letter-spacing: .3em; color: var(--muted); margin-top: 8px; }
+  .spread { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .spread.rev > :first-child { order: 2; }
+  .spread figure { margin: 0; }
+  .spread figcaption { font-size: 11px; letter-spacing: .15em; color: var(--muted); margin-top: 8px; }
+  .spread .body { font-size: 15px; }
+  .spread .body p:first-of-type::first-letter { font-family: var(--mincho); font-size: 3em; float: left; line-height: 1; margin: 6px 8px 0 0; color: var(--accent); }
+  .pull { font-family: var(--mincho); font-size: 24px; line-height: 1.7; letter-spacing: .08em; border-left: 3px solid var(--accent); padding-left: 20px; margin: 28px 0; }
+  .shopbox { border: 1px solid var(--fg); padding: 18px 22px; margin-top: 28px; font-size: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+  .shopbox b { font-family: var(--mincho); font-size: 16px; grid-column: 1 / -1; letter-spacing: .1em; }
+  .shopbox span { color: var(--muted); }
+  .full { margin: 56px 0 0; position: relative; }
+  .full img { width: 100%; max-height: 520px; object-fit: cover; }
+  .full .cap { position: absolute; right: 0; bottom: 0; background: var(--bg); padding: 8px 16px; font-size: 11px; letter-spacing: .2em; }
+  .mosaic { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-top: 40px; }
+  .mosaic img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .mosaic img:first-child { grid-row: span 2; aspect-ratio: auto; height: 100%; }
+
+  /* interview */
+  .intv { background: var(--ink); color: #e8e3d8; padding: 96px 0; }
+  .intv .kicker { color: #9a9282; }
+  .intv h2 { font-size: clamp(26px, 3vw, 40px); letter-spacing: .1em; color: #fff; }
+  .intv .qa { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 40px; }
+  .intv dt { font-family: var(--mincho); color: var(--accent); margin-top: 18px; font-size: 16px; }
+  .intv dd { margin: 4px 0 0; font-size: 14px; color: #cfc8b9; }
+  .intv img { border: 6px solid #2b2924; }
+
+  /* colophon */
+  .colo { padding: 72px 0; }
+  .colo .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid var(--fg); padding-top: 24px; font-size: 13px; }
+  .colo b { font-family: var(--mincho); display: block; letter-spacing: .1em; margin-bottom: 6px; }
+  .colo span { color: var(--muted); }
+  .colo .end { margin-top: 40px; font-size: 11px; letter-spacing: .2em; color: var(--muted); display: flex; justify-content: space-between; }
+
+  @media (max-width: 900px) {
+    .cover { grid-template-columns: 1fr; } .cover .tx { padding: 36px 0 24px; } .cover .ph img { min-height: 320px; }
+    .toc { grid-template-columns: 1fr; } .toc a { border-right: 0; border-bottom: 1px solid var(--line); padding: 14px 0 !important; }
+    .chap { padding: 56px 0; } .chap-head { grid-template-columns: 1fr; gap: 6px; } .num { font-size: 48px; }
+    .spread, .intv .qa { grid-template-columns: 1fr; gap: 24px; } .spread.rev > :first-child { order: 0; }
+    .mosaic { grid-template-columns: 1fr 1fr; } .mosaic img:first-child { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/9; }
+    .colo .grid { grid-template-columns: 1fr 1fr; } .mast nav { flex-wrap: wrap; gap: 12px 18px; } .shopbox { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="title">湯島夜話<small>YUSHIMA YAWA — Keikadou Co., Ltd.</small></div>
+    <div class="meta">株式会社けいか堂飲料店<br>四つの酒場の物語 · 2026年秋号</div>
+  </div>
+  <div class="wrap"><nav><a href="#c1">01 バー</a><a href="#c2">02 宮城</a><a href="#c3">03 蕎麦</a><a href="#intv">店主に聞く</a><a href="#colo">奥付・店舗情報</a><a href="bar-kadoya.html">別冊：バーカドヤ</a></nav></div>
+</header>
+
+<div class="wrap">
+  <div class="cover">
+    <div class="tx">
+      <div>
+        <div class="kicker">Yushima, Tokyo · Four sakaba</div>
+        <h1>角を曲がると、<br><em>懐かしい</em>夜が<br>待っている。</h1>
+        <p class="lead">湯島天神の坂を下りた路地に、四つの小さな酒場がある。角地のバーから始まった、ひとつの家族の話。</p>
+      </div>
+      <a class="btn" href="#c1">読みはじめる</a>
+    </div>
+    <div class="ph"><img src="images/hero-bar-counter.jpg" alt="バーカドヤのカウンター"><span class="cap">BAR KADOYA, YUSHIMA 3-45-3</span></div>
+  </div>
+  <div class="toc">
+    <a href="#c1"><span class="n">01</span><span><b>角地のバー</b><small>銅マグハイボールの話</small></span></a>
+    <a href="#c2"><span class="n">02</span><span><b>栗原から、湯島へ</b><small>宮城北部の酒と肴</small></span></a>
+    <a href="#c3"><span class="n">03</span><span><b>呑んで、〆に蕎麦</b><small>蕎麦酒場という発明</small></span></a>
+  </div>
+</div>
+
+<section class="chap" id="c1"><div class="wrap">
+  <div class="chap-head"><div class="num">01</div><h2>角地のバー<small>Bar Kadoya — the copper mug</small></h2></div>
+  <div class="spread">
+    <figure><img src="images/kadoya-mug.jpg" alt="銅マグハイボール"><figcaption>角ハイボール 500円。冷凍庫から出したばかりの銅マグで。</figcaption></figure>
+    <div class="body">
+      <p>湯島3丁目45番地。春日通りから一本入った角に、看板の小さなバーがある。店の名は、そのまま「カドヤ」。扉を開けると、落とした照明の下にレンガと木のカウンターが伸びていて、初めて来たはずなのに、どこかで来たことがあるような気がする。</p>
+      <p>名物は、角瓶のハイボールだ。山崎バーボン樽原酒をキーモルトにした甘やかな香りと厚みのあるコク。それを、冷凍庫でキンキンに冷やした銅のマグカップに注ぐ。薄い縁が唇に触れた瞬間、炭酸の刺激と香りが立ち上がる。</p>
+      <div class="pull">本当に美味しいハイボールを、心から寛ぎながら飲んでいただきたい。</div>
+      <p>食べるものも、バーにしてはしっかりしている。じっくり煮込んだ「カドヤの煮込」、醤油に漬けたチーズ、そして喫茶店のそれを思い出す「昭和のナポリタン」。飲んだ〆にナポリタンを頼む客が、この店には多い。</p>
+      <div class="shopbox"><b>バーカドヤ</b><span>東京都文京区湯島3-45-3 小林ビル1F</span><span>03-3831-4775</span><span>18:00〜翌4:00（L.O.3:00）</span><span>日曜定休</span></div>
+      <p style="margin-top:20px"><a class="btn" href="bar-kadoya.html">別冊：バーカドヤを読む</a></p>
+    </div>
+  </div>
+  <div class="full"><img src="images/kadoya-backlit.jpg" alt="ずらりと並ぶ角瓶"><span class="cap">角瓶、1937年生まれ。</span></div>
+</div></section>
+
+<section class="chap" id="c2"><div class="wrap">
+  <div class="chap-head"><div class="num">02</div><h2>栗原から、湯島へ<small>Kuriharaya — northern Miyagi</small></h2></div>
+  <div class="spread rev">
+    <figure><img src="images/kuri-greens-pork.jpg" alt="宮城の青菜と豚肉、綿屋"><figcaption>宮城の青菜、豚肉、そして栗原の酒「綿屋」。</figcaption></figure>
+    <div class="body">
+      <p>店主の村山は、宮城県北部・栗原の生まれだ。栗駒山のふもとに田んぼが広がり、昼夜の寒暖差と山の伏流水が、粘りと甘みのある米を育てる土地。その米と野菜を、農家から直接、湯島の路地裏に運んでくる。</p>
+      <p>「くりはら屋」のお通しは、小さな鍋だ。宮城の青菜をどっさり入れた「草鍋」。出汁で野菜をしゃぶしゃぶし、豚肉を足し、酒を注ぐ。栗駒山、萩の鶴、綿屋。栗原の三つの蔵の酒が、同じ土地の野菜と出会う。</p>
+      <div class="pull">生産者の熱い想いを、料理として皆様にお届けしたい。</div>
+      <p>焼鳥は一本ずつ丁寧に焼く。〆は栗原の米の玉子焼。木目の調度品に囲まれた1階と2階は、少人数にも宴会にも向いている。</p>
+      <div class="shopbox"><b>宮城北部の酒と肴 くりはら屋</b><span>東京都文京区湯島3-46-9 スギヤマビル1F・2F</span><span>03-3831-5256</span><span>18:00〜翌4:00（L.O.3:00）</span><span>日曜定休</span></div>
+    </div>
+  </div>
+  <div class="mosaic"><img src="images/kuri-exterior.jpg" alt="くりはら屋 外観"><img src="images/kuri-kusanabe.jpg" alt="草鍋"><img src="images/kuri-yakitori.jpg" alt="焼鳥"><img src="images/kuri-rice-greens.jpg" alt="栗原のお米"><img src="images/hero-sake.jpg" alt="宮城の地酒"></div>
+</div></section>
+
+<section class="chap" id="c3"><div class="wrap">
+  <div class="chap-head"><div class="num">03</div><h2>呑んで、〆に蕎麦<small>Soba Sakaba Kadoya — two shops</small></h2></div>
+  <div class="spread">
+    <figure><img src="images/tenjin-tantan.jpg" alt="〆の蕎麦"><figcaption>日替わりの出汁。クリーミーでピリ辛な坦々出汁の日も。</figcaption></figure>
+    <div class="body">
+      <p>蕎麦屋で一杯、は江戸の昔からの楽しみだ。それを酒場のかたちにしたのが「蕎麦酒場 角ヤ」。湯島天神の男坂を下りた路地の「湯島天神」店と、駅を出てすぐ、テラス席のある「春日テラス」店。</p>
+      <p>ハイボールや日本酒を片手に、揚げ物や小皿をつまむ。そして最後は、手繰る蕎麦で〆る。飲んだあとの蕎麦は格別だ。あっさりのせいろから、ピリ辛の坦々出汁まで、その日の気分で選べばいい。</p>
+      <div class="pull">一軒目にも、二軒目にも。ちょいと寄りやすい店。</div>
+      <div class="shopbox"><b>蕎麦酒場 角ヤ 湯島天神</b><span>湯島3-36-8</span><span>03-3831-8018</span><span>18:00〜翌3:00（金曜〜翌4:00）</span><span>日曜定休</span></div>
+      <div class="shopbox"><b>蕎麦酒場 角ヤ 春日テラス</b><span>湯島3-46-1 1F</span><span>03-3834-4270</span><span>18:00〜翌4:00（L.O.3:00）</span><span>日曜定休</span></div>
+    </div>
+  </div>
+  <div class="full"><img src="images/hero-soba-night.jpg" alt="蕎麦酒場 角ヤ 夜の外観"><span class="cap">蕎麦酒場 角ヤ 湯島天神、夜。</span></div>
+</div></section>
+
+<section class="intv" id="intv"><div class="wrap">
+  <div class="kicker">Interview</div>
+  <h2>店主に聞く、四つの店の共通点。</h2>
+  <div class="qa">
+    <dl>
+      <dt>Q. バー、居酒屋、蕎麦酒場。ばらばらに見えます。</dt><dd>業態は違っても、やっていることは同じです。お酒が進むものを出して、初めての人にもどこか懐かしいと思ってもらう。それだけです。</dd>
+      <dt>Q. なぜ全部、湯島3丁目に？</dt><dd>歩いて2分で回れるから、はしごができる。カドヤで一杯、くりはら屋で鍋、角ヤで蕎麦。一晩で全部できます。</dd>
+      <dt>Q. 朝4時まで開けている理由は？</dt><dd>湯島で働いている人の仕事が終わるのが遅いんです。その人たちの一軒目でありたい。</dd>
+      <dt>Q. 宮城への想いについて。</dt><dd>栗原の米を一度食べてもらいたい。それが「くりはら屋」の全部です。</dd>
+    </dl>
+    <img src="images/kadoya-facade.jpg" alt="バーカドヤ 外観">
+  </div>
+  <p style="margin-top:24px;font-size:12px;color:#9a9282">※インタビューはレイアウト確認用の仮の文章です。実際の取材内容に差し替えてください。</p>
+</div></section>
+
+<section class="colo" id="colo"><div class="wrap">
+  <div class="kicker">Colophon / Shops</div>
+  <div class="grid" style="margin-top:14px">
+    <div><b>バーカドヤ</b><span>湯島3-45-3 小林ビル1F<br>03-3831-4775<br>18:00〜翌4:00 / 日曜定休</span></div>
+    <div><b>くりはら屋</b><span>湯島3-46-9 スギヤマビル1F・2F<br>03-3831-5256<br>18:00〜翌4:00 / 日曜定休</span></div>
+    <div><b>蕎麦酒場 角ヤ 湯島天神</b><span>湯島3-36-8<br>03-3831-8018<br>18:00〜翌3:00（金〜4:00）/ 日曜定休</span></div>
+    <div><b>蕎麦酒場 角ヤ 春日テラス</b><span>湯島3-46-1 1F<br>03-3834-4270<br>18:00〜翌4:00 / 日曜定休</span></div>
+  </div>
+<div class="wrap extlinks" style="padding-top:8px;padding-bottom:24px;font-size:12px;letter-spacing:.08em;line-height:2.2"><span style="opacity:.7">食べログ：</span><a href="https://tabelog.com/tokyo/A1311/A131101/13039186/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">バーカドヤ</a> ／ <a href="https://tabelog.com/tokyo/A1311/A131101/13266473/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">くりはら屋</a> ／ <a href="https://tabelog.com/tokyo/A1311/A131101/13219181/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">角ヤ 湯島天神</a> ／ <a href="https://tabelog.com/tokyo/A1311/A131101/13219095/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">角ヤ 春日テラス</a><br><span style="opacity:.7">Instagram：</span><a href="https://www.instagram.com/kuriharaya_official/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">@kuriharaya_official</a> ／ <a href="https://www.instagram.com/kadoya_tenjin/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">@kadoya_tenjin</a> ／ <a href="https://www.instagram.com/kadoya_terasu/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">@kadoya_terasu</a></div>
+  <div class="end"><span>発行：株式会社けいか堂飲料店 〒113-0034 東京都文京区湯島3-45-3</span><span>案B：雑誌風エディトリアル型</span></div>
+</div></section>
+
+</body>
+</html>
